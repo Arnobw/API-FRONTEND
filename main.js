@@ -6,17 +6,17 @@ $.get('https://samson-api.herokuapp.com/api/quotes', function (data) {
     let namen = data.map(function (q) {
         return q.author;
     });
-   
 
-    var filtered = namen.filter(function(item, index){
+
+    var filtered = namen.filter(function (item, index) {
         return namen.indexOf(item) >= index;
     });
 
 
-    for(i=0; i< filtered.length; i++){
+    for (i = 0; i < filtered.length; i++) {
         $('#namen').append("<option value='" + filtered[i] + "'>" + "</option>")
     }
-    
+
 });
 
 $('#btnAuth').click(function () {
@@ -35,7 +35,7 @@ function randomQuote() {
         $('#foto2').show();
         $('#foto2').css('background-image', "url('../img/" + data.author + ".gif')");
 
-        
+
     })
 }
 
@@ -44,22 +44,22 @@ $('#btnRand, #foto2').click(randomQuote);
 
 // episch de backend werkt gewoon echt
 function quoteZoeken() {
-  
-$('#btnAuth, #btnRand, #btnQuo').hide();
-$('#input').show();
 
-$('#input').keydown(function (e) {
+    $('#btnAuth, #btnRand, #btnQuo').hide();
+    $('#input').show();
+
+    $('#input').keydown(function (e) {
         if (e.which === 13) {
-            
+
             let naam = $('#input').val();
             $('#quotelijst').empty();
             $('#foto').show();
             $('#foto').css('background-image', "url('img/huis.jpg')");
             $.get('https://samson-api.herokuapp.com/api/quotes/quote/' + naam, function (data) {
-               
-            data.forEach(quotee => {
-            $('#quotelijst').append('<li>' + quotee.quote + " </li>" + "<p class='lijstnaam' id='" + quotee.author + "'>" + "- " + quotee.author + "</p>");
-            });
+
+                data.forEach(quotee => {
+                    $('#quotelijst').append('<li>' + quotee.quote + " </li>" + "<p class='lijstnaam' id='" + quotee.author + "'>" + "- " + quotee.author + "</p>");
+                });
             })
         }
     })
