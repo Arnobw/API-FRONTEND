@@ -2,7 +2,7 @@ $('#foto, #foto2').hide();
 $('#input').hide();
 
 //vult de datalist aan met elke author in de database en skipped elke dubbele entry;
-$.get('http://localhost:4000/api/quotes', function (data) {
+$.get('https://localhost:4000/api/quotes', function (data) {
     let namen = data.map(function (q) {
         return q.author;
     });
@@ -27,7 +27,7 @@ $('#btnAuth').click(function () {
 
 function randomQuote() {
     $('#btnAuth, #btnRand, #btnQuo').hide();
-    $.get('http://localhost:4000/api/quotes/random/r', function (data) {
+    $.get('https://localhost:4000/api/quotes/random/r', function (data) {
         // let randje = Array.from(data);
         // let r = Math.floor(Math.random() * randje.length);
         $('#quotelijst').empty();
@@ -53,7 +53,7 @@ $('#input').keydown(function (e) {
             $('#quotelijst').empty();
             $('#foto').show();
             $('#foto').css('background-image', "url('../img/huis.jpg')");
-            $.get('http://localhost:4000/api/quotes/quote/' + naam, function (data) {
+            $.get('https://localhost:4000/api/quotes/quote/' + naam, function (data) {
                
             data.forEach(quotee => {
             $('#quotelijst').append('<li>' + quotee.quote + " </li>" + "<p class='lijstnaam' id='" + quotee.author + "'>" + "- " + quotee.author + "</p>");
@@ -77,7 +77,7 @@ function naamZoeken() {
             $("#container").hide();
             $("#container").slideDown();
 
-            $.get('http://localhost:4000/api/quotes/' + naam, function (data) {
+            $.get('https://localhost:4000/api/quotes/' + naam, function (data) {
 
                 if (data.length == 0) {
                     $('#quotelijst').append("<li>" + "Ja lap zeg, die woont toch niet in het dorp?" + "</li>")
