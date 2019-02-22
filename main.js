@@ -34,7 +34,7 @@ function randomQuote() {
         $('#quotelijst').append('<li>' + data.quote + " </li>" + "<p>" + "- " + data.author + "</p>");
         $('#foto2').show();
         $('#foto2').css('background-image', "url('../img/" + data.author + ".gif')");
-    
+
         
     })
 }
@@ -54,7 +54,7 @@ $('#input').keydown(function (e) {
             let naam = $('#input').val();
             $('#quotelijst').empty();
             $('#foto').show();
-            $('#foto').css('background-image', "url('../img/huis.jpg')");
+            $('#foto').css('background-image', "url('img/huis.jpg')");
             $.get('https://samson-api.herokuapp.com/api/quotes/quote/' + naam, function (data) {
                
             data.forEach(quotee => {
@@ -84,10 +84,10 @@ function naamZoeken() {
                 if (data.length == 0) {
                     $('#quotelijst').append("<li>" + "Ja lap zeg, die woont toch niet in het dorp?" + "</li>")
                     $('#foto').show();
-                    $('#foto').css('background-image', "url('../img/ramp.gif')");
+                    $('#foto').css('background-image', "url('img/ramp.gif')");
                 } else {
                     $('#foto').show();
-                    $('#foto').css('background-image', "url('../img/" + data[0].author + ".gif')");
+                    $('#foto').css('background-image', "url('img/" + data[0].author + ".gif')");
 
                     //sorteer tijd
 
