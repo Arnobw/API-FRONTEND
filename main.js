@@ -34,6 +34,8 @@ function randomQuote() {
         $('#quotelijst').append('<li>' + data.quote + " </li>" + "<p>" + "- " + data.author + "</p>");
         $('#foto2').show();
         $('#foto2').css('background-image', "url('../img/" + data.author + ".gif')");
+    
+        
     })
 }
 
